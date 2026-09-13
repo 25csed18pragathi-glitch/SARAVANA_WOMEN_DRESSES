@@ -98,10 +98,12 @@ export default function AdminLoginPage() {
 
             <form onSubmit={handleLoginSubmit} className="auth-form">
               <div className="form-group">
-                <label>Admin Email Address</label>
+                <label htmlFor="admin-email">Admin Email Address</label>
                 <div className="input-with-icon">
                   <Mail size={18} className="field-icon" />
                   <input
+                    id="admin-email"
+                    name="email"
                     type="email"
                     placeholder="Enter admin email"
                     value={email}
@@ -112,10 +114,12 @@ export default function AdminLoginPage() {
               </div>
 
               <div className="form-group">
-                <label>Password</label>
+                <label htmlFor="admin-password">Password</label>
                 <div className="input-with-icon">
                   <Lock size={18} className="field-icon" />
                   <input
+                    id="admin-password"
+                    name="password"
                     type="password"
                     placeholder="Enter password"
                     value={password}

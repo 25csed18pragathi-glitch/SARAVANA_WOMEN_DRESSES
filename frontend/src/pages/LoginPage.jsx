@@ -110,10 +110,12 @@ export default function LoginPage() {
 
             <form onSubmit={handleLoginSubmit} className="auth-form">
               <div className="form-group">
-                <label>Email Address</label>
+                  <label htmlFor="login-email">Email Address</label>
                 <div className="input-with-icon">
                   <Mail size={18} className="field-icon" />
                   <input
+                    id="login-email"
+                    name="email"
                     type="email"
                     placeholder="name@example.com"
                     value={email}
@@ -125,7 +127,7 @@ export default function LoginPage() {
 
               <div className="form-group">
                 <div className="label-with-link">
-                  <label>Password</label>
+                  <label htmlFor="login-password">Password</label>
                   <span
                     className="forgot-password-link"
                     onClick={() => alert('Password reset link has been dispatched to your email address.')}
@@ -136,6 +138,8 @@ export default function LoginPage() {
                 <div className="input-with-icon">
                   <Lock size={18} className="field-icon" />
                   <input
+                    id="login-password"
+                    name="password"
                     type="password"
                     placeholder="Enter your password"
                     value={password}
@@ -147,7 +151,7 @@ export default function LoginPage() {
 
               <div className="auth-remember-row">
                 <label className="checkbox-remember">
-                  <input type="checkbox" defaultChecked />
+                  <input id="remember-login" name="rememberLogin" type="checkbox" defaultChecked />
                   <span>Remember me on this browser</span>
                 </label>
               </div>

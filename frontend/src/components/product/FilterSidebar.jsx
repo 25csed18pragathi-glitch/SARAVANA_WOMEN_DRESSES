@@ -85,6 +85,8 @@ export default function FilterSidebar({
       <div className="filter-group">
         <label className="filter-group-title">Sort By</label>
         <select
+          id="product-sort"
+          name="sort"
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
           className="filter-sort-select"
@@ -103,6 +105,8 @@ export default function FilterSidebar({
         <label className="filter-checkbox-label">
           <input
             type="checkbox"
+            id="in-stock-only"
+            name="inStockOnly"
             checked={filters.inStockOnly || false}
             onChange={(e) => setFilters((prev) => ({ ...prev, inStockOnly: e.target.checked }))}
           />
@@ -146,6 +150,8 @@ export default function FilterSidebar({
               <label key={cat.id || cat._id} className="filter-checkbox-label">
                 <input
                   type="checkbox"
+                  id={`category-${cat.slug}`}
+                  name="category"
                   checked={isChecked}
                   onChange={() => handleCategoryChange(cat.slug)}
                 />
@@ -167,6 +173,8 @@ export default function FilterSidebar({
               <label key={b.id || b._id} className="filter-checkbox-label">
                 <input
                   type="checkbox"
+                  id={`brand-${b.slug || b.name}`}
+                  name="brand"
                   checked={isChecked}
                   onChange={() => handleBrandChange(b.name)}
                 />

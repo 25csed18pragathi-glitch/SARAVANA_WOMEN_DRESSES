@@ -297,6 +297,8 @@ export default function CartPage() {
               ) : (
                 <form className="coupon-input-form" onSubmit={handleApplyCoupon}>
                   <input
+                    id="coupon-code"
+                    name="couponCode"
                     type="text"
                     placeholder="Enter coupon code (e.g. SARAVANA10)"
                     value={inputCoupon}
@@ -420,11 +422,11 @@ export default function CartPage() {
 
                 <div className="payment-options-preview">
                   <label className="payment-radio-option active">
-                    <input type="radio" checked={paymentMethod === 'COD'} onChange={() => setPaymentMethod('COD')} />
+                    <input id="payment-cod" name="paymentMethod" type="radio" checked={paymentMethod === 'COD'} onChange={() => setPaymentMethod('COD')} />
                     <span>Cash on Delivery (COD) / Pay on Delivery</span>
                   </label>
                   <label className="payment-radio-option">
-                    <input type="radio" checked={paymentMethod === 'Razorpay'} onChange={() => setPaymentMethod('Razorpay')} />
+                    <input id="payment-razorpay" name="paymentMethod" type="radio" checked={paymentMethod === 'Razorpay'} onChange={() => setPaymentMethod('Razorpay')} />
                     <span>UPI / Cards / Net Banking (Razorpay Test Mode)</span>
                   </label>
                 </div>

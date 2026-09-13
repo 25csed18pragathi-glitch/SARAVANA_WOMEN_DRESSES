@@ -129,6 +129,8 @@ export default function SearchPage() {
           <form className="search-main-form" onSubmit={handleSearchSubmit}>
             <Search size={22} className="search-form-icon" />
             <input
+              id="search-page-input"
+              name="search"
               type="text"
               placeholder="Search by product name, brand, or category..."
               value={searchInput}

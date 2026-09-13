@@ -395,12 +395,12 @@ function ProductDetailsContent({ product }) {
         ))}
         {user && (
           <form className="product-review-form" onSubmit={handleReviewSubmit}>
-            <label>Rating
-              <select value={reviewRating} onChange={(event) => setReviewRating(Number(event.target.value))}>
+            <label htmlFor="review-rating">Rating
+              <select id="review-rating" name="rating" value={reviewRating} onChange={(event) => setReviewRating(Number(event.target.value))}>
                 {[5, 4, 3, 2, 1].map((value) => <option key={value} value={value}>{value} stars</option>)}
               </select>
             </label>
-            <textarea value={reviewComment} onChange={(event) => setReviewComment(event.target.value)} placeholder="Share your experience" required />
+            <textarea id="review-comment" name="comment" value={reviewComment} onChange={(event) => setReviewComment(event.target.value)} placeholder="Share your experience" required />
             <button type="submit" className="btn-primary">Submit review</button>
             {reviewMessage && <p>{reviewMessage}</p>}
           </form>

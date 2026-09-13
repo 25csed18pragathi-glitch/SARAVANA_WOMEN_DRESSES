@@ -125,10 +125,12 @@ export default function RegisterPage() {
 
             <form onSubmit={handleRegisterSubmit} className="auth-form">
               <div className="form-group">
-                <label>Full Name</label>
+                <label htmlFor="register-name">Full Name</label>
                 <div className="input-with-icon">
                   <User size={18} className="field-icon" />
                   <input
+                    id="register-name"
+                    name="name"
                     type="text"
                     placeholder="e.g. Priyanka Sharma"
                     value={formData.fullName}
@@ -140,10 +142,12 @@ export default function RegisterPage() {
 
               <div className="form-row-2col">
                 <div className="form-group">
-                  <label>Email Address</label>
+                  <label htmlFor="register-email">Email Address</label>
                   <div className="input-with-icon">
                     <Mail size={18} className="field-icon" />
                     <input
+                      id="register-email"
+                      name="email"
                       type="email"
                       placeholder="name@example.com"
                       value={formData.email}
@@ -154,10 +158,12 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="form-group">
-                  <label>Mobile Number</label>
+                  <label htmlFor="register-phone">Mobile Number</label>
                   <div className="input-with-icon">
                     <Phone size={18} className="field-icon" />
                     <input
+                      id="register-phone"
+                      name="phone"
                       type="tel"
                       placeholder="e.g. 98401 23456"
                       value={formData.phone}
@@ -170,10 +176,12 @@ export default function RegisterPage() {
 
               <div className="form-row-2col">
                 <div className="form-group">
-                  <label>Password</label>
+                  <label htmlFor="register-password">Password</label>
                   <div className="input-with-icon">
                     <Lock size={18} className="field-icon" />
                     <input
+                      id="register-password"
+                      name="password"
                       type="password"
                       placeholder="At least 6 characters"
                       value={formData.password}
@@ -184,10 +192,12 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="form-group">
-                  <label>Confirm Password</label>
+                  <label htmlFor="register-confirm-password">Confirm Password</label>
                   <div className="input-with-icon">
                     <Lock size={18} className="field-icon" />
                     <input
+                      id="register-confirm-password"
+                      name="confirmPassword"
                       type="password"
                       placeholder="Confirm password"
                       value={formData.confirmPassword}
@@ -200,7 +210,7 @@ export default function RegisterPage() {
 
               <div className="auth-remember-row">
                 <label className="checkbox-remember">
-                  <input type="checkbox" required />
+                  <input id="register-terms" name="terms" type="checkbox" required />
                   <span>I agree to the Terms of Service & Privacy Policy</span>
                 </label>
               </div>

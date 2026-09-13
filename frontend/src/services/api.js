@@ -1,7 +1,8 @@
 /**
  * API service layer to communicate with the Saravana Women Dresses backend
  */
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+const configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = (configuredApiBaseUrl || (import.meta.env.DEV ? 'http://localhost:5000' : window.location.origin)).replace(/\/+$/, '');
 
 /**
  * Universal request helper that injects auth tokens and handles proxy fallback
@@ -25,25 +26,15 @@ async function request(endpoint, options = {}) {
   };
 
   try {
-    const response = await fetch(cleanEndpoint, mergedOptions);
+    const response = await fetch(`${API_BASE_URL}${cleanEndpoint}`, mergedOptions);
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       throw new Error(errorData.message || `HTTP error ${response.status}`);
     }
     return await response.json();
-  } catch (proxyError) {
-    // Fallback to direct backend URL if proxy fails or not running via dev server
-    try {
-      const directResponse = await fetch(`${API_BASE_URL}${cleanEndpoint}`, mergedOptions);
-      if (!directResponse.ok) {
-        const errorData = await directResponse.json().catch(() => ({}));
-        throw new Error(errorData.message || `Direct connection error ${directResponse.status}`);
-      }
-      return await directResponse.json();
-    } catch (directError) {
-      console.error(`API Error on ${cleanEndpoint}:`, directError.message || proxyError.message);
-      throw directError;
-    }
+  } catch (error) {
+    console.error(`API Error on ${cleanEndpoint}:`, error.message);
+    throw error;
   }
 }
 

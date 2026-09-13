@@ -119,6 +119,8 @@ export default function Footer() {
 
             <form className="footer-newsletter-form" onSubmit={handleNewsletterSubmit}>
               <input
+                id="newsletter-email"
+                name="email"
                 type="email"
                 placeholder="Enter your email address..."
                 value={newsletterEmail}

@@ -160,6 +160,8 @@ export default function Navbar() {
           <form className="navbar-search-form" onSubmit={handleSearchSubmit}>
             <Search size={18} className="search-icon-inside" />
             <input
+              id="site-search"
+              name="search"
               type="text"
               placeholder="Search sarees, kurtis, gowns, brands..."
               value={searchQuery}
