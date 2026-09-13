@@ -1,22 +1,16 @@
-/**
- * API service layer to communicate with the Saravana Women Dresses backend
- */
 const configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL;
-const API_BASE_URL = (configuredApiBaseUrl || (import.meta.env.DEV ? 'http://localhost:5000' : window.location.origin)).replace(/\/+$/, '');
 
-/**
- * Universal request helper that injects auth tokens and handles proxy fallback
- */
-async function request(endpoint, options = {}) {
-  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
-
-  // Automatically attach auth token if available
-  const token = localStorage.getItem('swd_auth_token');
+const API_BASE_URL = (
+  configuredApiBaseUrl ||
+  (import.meta.env.DEV
+    ? 'http://localhost:5000'
+    : window.location.origin)
+).replace(/\/+$/, '');
   const headers = {
     ...(options.headers || {})
   };
 
-  if (token && !headers.Authorization) {
+  if (token && !headers.Authorizatioconst configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL;n) {
     headers.Authorization = `Bearer ${token}`;
   }
 

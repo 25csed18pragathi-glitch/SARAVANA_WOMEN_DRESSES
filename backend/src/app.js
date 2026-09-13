@@ -17,7 +17,21 @@ import shopSettingsRoutes from './routes/shopSettings.routes.js';
 const app = express();
 
 // Middleware
-app.use(cors());
+const allowedOrigins = new Set([
+  'https://saravana-women-dresses.vercel.app',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173'
+]);
+
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin || allowedOrigins.has(origin)) {
+      callback(null, true);
+      return;
+    }
+    callback(new Error(`CORS origin not allowed: ${origin}`));
+  }
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
